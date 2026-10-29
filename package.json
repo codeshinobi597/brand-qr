@@ -1,0 +1,85 @@
+{
+  "name": "brand-qr",
+  "version": "0.1.0",
+  "description": "Zero-dependency, strictly typed QR code generator for React and Next.js with custom colors, module shapes and company-name labels.",
+  "type": "module",
+  "main": "./build/index.cjs",
+  "module": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "require": {
+        "types": "./build/index.d.cts",
+        "default": "./build/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./build/react.d.ts",
+        "default": "./build/react.js"
+      },
+      "require": {
+        "types": "./build/react.d.cts",
+        "default": "./build/react.cjs"
+      }
+    },
+    "./client": {
+      "import": {
+        "types": "./build/client.d.ts",
+        "default": "./build/client.js"
+      },
+      "require": {
+        "types": "./build/client.d.cts",
+        "default": "./build/client.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "build"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf build && tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "keywords": [
+    "qr",
+    "qrcode",
+    "qr-code",
+    "react",
+    "nextjs",
+    "svg",
+    "typescript"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@zxing/library": "^0.21.3",
+    "dejavu-fonts-ttf": "^2.37.3",
+    "jsqr": "^1.4.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}
