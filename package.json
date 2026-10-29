@@ -6,6 +6,16 @@
   "main": "./build/index.cjs",
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "react": [
+        "./build/react.d.ts"
+      ],
+      "client": [
+        "./build/client.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "import": {
@@ -48,7 +58,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+    "prepublishOnly": "npm run typecheck && npm test && npm run build && npm run check:package",
+    "check:package": "publint && npm_config_dry_run=false attw --pack ."
   },
   "keywords": [
     "qr",
@@ -60,6 +71,18 @@
     "typescript"
   ],
   "license": "MIT",
+  "author": "codeshinobi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeshinobi597/brand-qr.git"
+  },
+  "homepage": "https://github.com/codeshinobi597/brand-qr#readme",
+  "bugs": {
+    "url": "https://github.com/codeshinobi597/brand-qr/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "peerDependencies": {
     "react": ">=18"
   },
@@ -69,6 +92,7 @@
     }
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^22.20.5",
     "@types/react": "^19.0.0",
@@ -76,6 +100,7 @@
     "@zxing/library": "^0.21.3",
     "dejavu-fonts-ttf": "^2.37.3",
     "jsqr": "^1.4.0",
+    "publint": "^0.3.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tsup": "^8.3.0",
